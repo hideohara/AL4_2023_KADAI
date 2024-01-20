@@ -10,6 +10,7 @@
 #include "ViewProjection.h"
 #include "WorldTransform.h"
 #include "Player.h"
+#include "Skydome.h"
 #include <memory>
 
 /// <summary>
@@ -56,13 +57,15 @@ private: // メンバ変数
 	uint32_t textureHandle_ = 0;
 
 	// 3Dモデル
-	//Model* model_ = nullptr;
 	std::unique_ptr<Model> model_;
+	std::unique_ptr<Model> modelSkydome_;
 
 	// ビュープロジェクション
 	ViewProjection viewProjection_;
 
 
-	// 自キャラ
+	// 各クラス
 	std::unique_ptr<Player> player_;
+	std::unique_ptr<Skydome> skydome_;
+
 };
