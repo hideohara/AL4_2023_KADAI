@@ -22,7 +22,7 @@ void GameScene::Initialize() {
 	textureHandle_ = TextureManager::Load("mario.jpg");
 
 	// 3Dモデルの生成
-	model_.reset(Model::Create());
+	model_.reset(Model::CreateFromOBJ("float", true));
 	modelSkydome_.reset(Model::CreateFromOBJ("skydome", true));
 	modelGround_.reset(Model::CreateFromOBJ("ground", true));
 
@@ -33,7 +33,7 @@ void GameScene::Initialize() {
 
 	// 自キャラの生成
 	player_ = std::make_unique<Player>();
-	player_->Initialize(model_.get(), textureHandle_);
+	player_->Initialize(model_.get());
 
 	// スカイドーム
 	skydome_ = std::make_unique<Skydome>();

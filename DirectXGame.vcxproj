@@ -107,6 +107,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="2d\ImGuiManager.cpp" />
+    <ClCompile Include="3d\MathUtilityForText.cpp" />
+    <ClCompile Include="3d\WorldTransformEx.cpp" />
     <ClCompile Include="base\DirectXCommon.cpp" />
     <ClCompile Include="base\WinApp.cpp" />
     <ClCompile Include="Ground.cpp" />
@@ -124,6 +126,7 @@
     <ClInclude Include="3d\DirectionalLight.h" />
     <ClInclude Include="3d\LightGroup.h" />
     <ClInclude Include="3d\Material.h" />
+    <ClInclude Include="3d\MathUtilityForText.h" />
     <ClInclude Include="3d\Mesh.h" />
     <ClInclude Include="3d\Model.h" />
     <ClInclude Include="3d\ObjectColor.h" />
