@@ -42,6 +42,13 @@ void GameScene::Initialize() {
 	// グランド
 	ground_ = std::make_unique<Ground>();
 	ground_->Initialize(modelGround_.get());
+
+	// フォローカメラ
+	followCamera_ = std::make_unique<FollowCamera>();
+	followCamera_->Initialize();
+
+	// 自キャラのワールドトランスフォームを追従カメラにセット
+	followCamera_->SetTarget(&player_->GetWorldTransform());
 }
 
 void GameScene::Update() {
@@ -49,6 +56,15 @@ void GameScene::Update() {
 	player_->Update();
 	skydome_->Update();
 	ground_->Update();
+	followCamera_->Update();
+
+	// 追従カメラのビュー行列をゲームシーンのビュープロジェクションにコピー;
+	viewProjection_.matView = followCamera_->GetViewProjection().matView;
+	// 追従カメラのプロジェクション行列をゲームシーンのビュープロジェクションにコピー;
+	viewProjection_.matProjection = followCamera_->GetViewProjection().matProjection;
+	// ゲームシーンのビュープロジェクション行列の転送処理
+	viewProjection_.TransferMatrix();
+
 }
 
 void GameScene::Draw() {

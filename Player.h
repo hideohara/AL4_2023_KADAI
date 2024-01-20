@@ -26,6 +26,7 @@ public:
 	void Draw(ViewProjection& viewProjection);
 
 
+	const WorldTransform& GetWorldTransform() { return worldTransform_; }
 
 	
   private:
