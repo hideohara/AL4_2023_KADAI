@@ -5,10 +5,10 @@
 GameScene::GameScene() {}
 
 GameScene::~GameScene() { 
-	delete model_; 
-	
-	// 自キャラの解放
-	delete player_;
+	//delete model_; 
+	//
+	//// 自キャラの解放
+	//delete player_;
 }
 
 void GameScene::Initialize() {
@@ -22,15 +22,15 @@ void GameScene::Initialize() {
 	textureHandle_ = TextureManager::Load("mario.jpg");
 
 	// 3Dモデルの生成
-	model_ = Model::Create();
+	model_.reset(Model::Create());
 
 	// ビュープロジェクションの初期化
 	viewProjection_.Initialize();
 
 	// 自キャラの生成
-	player_ = new Player();
+	player_ = std::make_unique<Player>();
 	// 自キャラの初期化
-	player_->Initialize(model_, textureHandle_);
+	player_->Initialize(model_.get(), textureHandle_);
 }
 
 void GameScene::Update() {
